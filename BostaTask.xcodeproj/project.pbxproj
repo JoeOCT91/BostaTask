@@ -8,22 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A069280F222A0032B636 /* AppDelegate.swift */; };
-		86B0A06C280F222A0032B636 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A06B280F222A0032B636 /* SceneDelegate.swift */; };
-		86B0A06E280F222A0032B636 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A06D280F222A0032B636 /* ViewController.swift */; };
 		86B0A071280F222A0032B636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A06F280F222A0032B636 /* Main.storyboard */; };
 		86B0A073280F222C0032B636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A072280F222C0032B636 /* Assets.xcassets */; };
 		86B0A076280F222C0032B636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A074280F222C0032B636 /* LaunchScreen.storyboard */; };
+		86B0A07F280F23D60032B636 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 86B0A07E280F23D60032B636 /* CombineCocoa */; };
+		86B0A088280F24C10032B636 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A087280F24C10032B636 /* Constants.swift */; };
+		86B0A08A280F24EA0032B636 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A089280F24EA0032B636 /* User.swift */; };
+		86B0A08E280F25930032B636 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A08D280F25930032B636 /* ProfileViewController.swift */; };
+		86B0A090280F25A60032B636 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A08F280F25A60032B636 /* AlbumViewController.swift */; };
+		86B0A092280F2E780032B636 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A091280F2E780032B636 /* ProfileViewModel.swift */; };
+		86B0A094280F34680032B636 /* AlboumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A093280F34680032B636 /* AlboumViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		86B0A066280F222A0032B636 /* BostaTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostaTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B0A069280F222A0032B636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86B0A06B280F222A0032B636 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		86B0A06D280F222A0032B636 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		86B0A070280F222A0032B636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86B0A072280F222C0032B636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86B0A075280F222C0032B636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86B0A077280F222C0032B636 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86B0A087280F24C10032B636 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		86B0A089280F24EA0032B636 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		86B0A08D280F25930032B636 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		86B0A08F280F25A60032B636 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		86B0A091280F2E780032B636 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		86B0A093280F34680032B636 /* AlboumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlboumViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B0A07F280F23D60032B636 /* CombineCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +66,91 @@
 		86B0A068280F222A0032B636 /* BostaTask */ = {
 			isa = PBXGroup;
 			children = (
-				86B0A069280F222A0032B636 /* AppDelegate.swift */,
-				86B0A06B280F222A0032B636 /* SceneDelegate.swift */,
-				86B0A06D280F222A0032B636 /* ViewController.swift */,
+				86B0A080280F23E40032B636 /* Shared */,
+				86B0A081280F23EC0032B636 /* Networking */,
+				86B0A082280F24190032B636 /* Utilities */,
+				86B0A084280F24610032B636 /* Model */,
+				86B0A083280F24530032B636 /* CustomViews */,
+				86B0A085280F246D0032B636 /* Scenes */,
+				86B0A086280F24790032B636 /* Resources */,
 				86B0A06F280F222A0032B636 /* Main.storyboard */,
 				86B0A072280F222C0032B636 /* Assets.xcassets */,
 				86B0A074280F222C0032B636 /* LaunchScreen.storyboard */,
 				86B0A077280F222C0032B636 /* Info.plist */,
 			);
 			path = BostaTask;
+			sourceTree = "<group>";
+		};
+		86B0A080280F23E40032B636 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A069280F222A0032B636 /* AppDelegate.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		86B0A081280F23EC0032B636 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		86B0A082280F24190032B636 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A087280F24C10032B636 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		86B0A083280F24530032B636 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		86B0A084280F24610032B636 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A089280F24EA0032B636 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86B0A085280F246D0032B636 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A08B280F253A0032B636 /* Profile */,
+				86B0A08C280F25570032B636 /* Album */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		86B0A086280F24790032B636 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		86B0A08B280F253A0032B636 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A08D280F25930032B636 /* ProfileViewController.swift */,
+				86B0A091280F2E780032B636 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		86B0A08C280F25570032B636 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A08F280F25A60032B636 /* AlbumViewController.swift */,
+				86B0A093280F34680032B636 /* AlboumViewModel.swift */,
+			);
+			path = Album;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +169,9 @@
 			dependencies = (
 			);
 			name = BostaTask;
+			packageProductDependencies = (
+				86B0A07E280F23D60032B636 /* CombineCocoa */,
+			);
 			productName = BostaTask;
 			productReference = 86B0A066280F222A0032B636 /* BostaTask.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +200,9 @@
 				Base,
 			);
 			mainGroup = 86B0A05D280F222A0032B636;
+			packageReferences = (
+				86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+			);
 			productRefGroup = 86B0A067280F222A0032B636 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +230,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86B0A06E280F222A0032B636 /* ViewController.swift in Sources */,
+				86B0A092280F2E780032B636 /* ProfileViewModel.swift in Sources */,
+				86B0A08E280F25930032B636 /* ProfileViewController.swift in Sources */,
+				86B0A094280F34680032B636 /* AlboumViewModel.swift in Sources */,
 				86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */,
-				86B0A06C280F222A0032B636 /* SceneDelegate.swift in Sources */,
+				86B0A08A280F24EA0032B636 /* User.swift in Sources */,
+				86B0A088280F24C10032B636 /* Constants.swift in Sources */,
+				86B0A090280F25A60032B636 /* AlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +456,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		86B0A07E280F23D60032B636 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86B0A05E280F222A0032B636 /* Project object */;
 }
