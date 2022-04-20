@@ -5,4 +5,8 @@
 //  Created by Yousef Mohamed on 19/04/2022.
 //
 
-import Foundation
+import UIKit
+
+class AlbumViewController: UIViewController {
+    
+}

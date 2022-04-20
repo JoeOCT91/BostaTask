@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86569B762810313D00CBD1EB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86569B752810313D00CBD1EB /* NetworkManager.swift */; };
 		86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A069280F222A0032B636 /* AppDelegate.swift */; };
 		86B0A071280F222A0032B636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A06F280F222A0032B636 /* Main.storyboard */; };
 		86B0A073280F222C0032B636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A072280F222C0032B636 /* Assets.xcassets */; };
@@ -18,9 +19,16 @@
 		86B0A090280F25A60032B636 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A08F280F25A60032B636 /* AlbumViewController.swift */; };
 		86B0A092280F2E780032B636 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A091280F2E780032B636 /* ProfileViewModel.swift */; };
 		86B0A094280F34680032B636 /* AlboumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A093280F34680032B636 /* AlboumViewModel.swift */; };
+		86B0A09A280F855C0032B636 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 86B0A099280F855C0032B636 /* CombineMoya */; };
+		86B0A09C280F855C0032B636 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 86B0A09B280F855C0032B636 /* Moya */; };
+		86B0A09E280F85C90032B636 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A09D280F85C90032B636 /* ProfileView.swift */; };
+		86B0A0A0280F86020032B636 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A09F280F86020032B636 /* AlbumView.swift */; };
+		86B0A0A2280F86920032B636 /* AlbumItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A0A1280F86920032B636 /* AlbumItemCollectionViewCell.swift */; };
+		86B0A0A4280FA59D0032B636 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A0A3280FA59D0032B636 /* APIRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86569B752810313D00CBD1EB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86B0A066280F222A0032B636 /* BostaTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostaTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B0A069280F222A0032B636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86B0A070280F222A0032B636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,6 +41,10 @@
 		86B0A08F280F25A60032B636 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		86B0A091280F2E780032B636 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		86B0A093280F34680032B636 /* AlboumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlboumViewModel.swift; sourceTree = "<group>"; };
+		86B0A09D280F85C90032B636 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		86B0A09F280F86020032B636 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		86B0A0A1280F86920032B636 /* AlbumItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		86B0A0A3280FA59D0032B636 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B0A09A280F855C0032B636 /* CombineMoya in Frameworks */,
 				86B0A07F280F23D60032B636 /* CombineCocoa in Frameworks */,
+				86B0A09C280F855C0032B636 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +106,8 @@
 		86B0A081280F23EC0032B636 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				86569B752810313D00CBD1EB /* NetworkManager.swift */,
+				86B0A0A3280FA59D0032B636 /* APIRouter.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -107,6 +123,7 @@
 		86B0A083280F24530032B636 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				86B0A0A1280F86920032B636 /* AlbumItemCollectionViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -140,6 +157,7 @@
 			children = (
 				86B0A08D280F25930032B636 /* ProfileViewController.swift */,
 				86B0A091280F2E780032B636 /* ProfileViewModel.swift */,
+				86B0A09D280F85C90032B636 /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -149,6 +167,7 @@
 			children = (
 				86B0A08F280F25A60032B636 /* AlbumViewController.swift */,
 				86B0A093280F34680032B636 /* AlboumViewModel.swift */,
+				86B0A09F280F86020032B636 /* AlbumView.swift */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -171,6 +190,8 @@
 			name = BostaTask;
 			packageProductDependencies = (
 				86B0A07E280F23D60032B636 /* CombineCocoa */,
+				86B0A099280F855C0032B636 /* CombineMoya */,
+				86B0A09B280F855C0032B636 /* Moya */,
 			);
 			productName = BostaTask;
 			productReference = 86B0A066280F222A0032B636 /* BostaTask.app */;
@@ -202,6 +223,7 @@
 			mainGroup = 86B0A05D280F222A0032B636;
 			packageReferences = (
 				86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+				86B0A098280F855C0032B636 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 86B0A067280F222A0032B636 /* Products */;
 			projectDirPath = "";
@@ -230,12 +252,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86569B762810313D00CBD1EB /* NetworkManager.swift in Sources */,
+				86B0A09E280F85C90032B636 /* ProfileView.swift in Sources */,
 				86B0A092280F2E780032B636 /* ProfileViewModel.swift in Sources */,
 				86B0A08E280F25930032B636 /* ProfileViewController.swift in Sources */,
+				86B0A0A0280F86020032B636 /* AlbumView.swift in Sources */,
 				86B0A094280F34680032B636 /* AlboumViewModel.swift in Sources */,
+				86B0A0A2280F86920032B636 /* AlbumItemCollectionViewCell.swift in Sources */,
 				86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */,
 				86B0A08A280F24EA0032B636 /* User.swift in Sources */,
 				86B0A088280F24C10032B636 /* Constants.swift in Sources */,
+				86B0A0A4280FA59D0032B636 /* APIRouter.swift in Sources */,
 				86B0A090280F25A60032B636 /* AlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -368,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -390,7 +417,7 @@
 				INFOPLIST_FILE = BostaTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -402,7 +429,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -418,7 +445,7 @@
 				INFOPLIST_FILE = BostaTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -430,7 +457,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -466,6 +493,14 @@
 				minimumVersion = 0.4.0;
 			};
 		};
+		86B0A098280F855C0032B636 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -473,6 +508,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
 			productName = CombineCocoa;
+		};
+		86B0A099280F855C0032B636 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86B0A098280F855C0032B636 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		86B0A09B280F855C0032B636 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86B0A098280F855C0032B636 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
