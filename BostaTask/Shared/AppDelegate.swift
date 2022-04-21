@@ -12,12 +12,14 @@ import Combine
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var coordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let mainNavigationController = UINavigationController()
+        coordinator = MainCoordinator(navigationController: mainNavigationController)
+        coordinator?.start()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let profileViewController = ProfileViewController.create()
-        let navigationViewController = UINavigationController(rootViewController: profileViewController)
-        window?.rootViewController = navigationViewController
+        window?.rootViewController = mainNavigationController
         window?.makeKeyAndVisible()
         return true
     }

@@ -7,10 +7,15 @@
 
 import Foundation
 
-protocol AlbumViewModelProtocol: AnyObject{
+protocol AlbumPhotosViewModelProtocol: AnyObject{
     
 }
 
-class AlbumViewModel: AlbumViewModelProtocol{
+class AlbumPhotosViewModel: AlbumPhotosViewModelProtocol {
+    
+    
+    init(albumId: Int) {
+        
+    }
     
 }

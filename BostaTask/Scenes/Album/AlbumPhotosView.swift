@@ -1,5 +1,5 @@
 //
-//  AlbumView.swift
+//  AlbumPhotosView.swift
 //  BostaTask
 //
 //  Created by Yousef Mohamed on 20/04/2022.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-class AlbumView: UIView {
+class AlbumPhotosView: UIView {
     
     let albumCollectionView = UICollectionView(frame: .zero)
     
     init() {
         super.init(frame: .zero)
+        backgroundColor = .white
         
     }
     

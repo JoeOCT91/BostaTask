@@ -8,7 +8,8 @@
 import UIKit
 
 protocol AppCoordinator: AnyObject {
-    
+    var navigationController: UINavigationController { get }
+    func start()
 }
 class MainCoordinator: AppCoordinator {
     
@@ -20,8 +21,13 @@ class MainCoordinator: AppCoordinator {
     }
     
     func start() {
-        let viewController = ProfileViewController.create()
-        
+        let viewController = ProfileViewController.create(coordinator: self)
+        navigationController.viewControllers = [viewController]
+    }
+    
+    func pushAlbumPhotosViewController(with albumId: Int) {
+        let viewController = ProfileViewController.create(coordinator: self)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     

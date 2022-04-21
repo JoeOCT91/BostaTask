@@ -24,6 +24,10 @@ class ProfileViewController: UIViewController {
     private var subscriptions = Set<AnyCancellable>()
     private var viewModel: ProfileViewModelProtocol!
     private var profileView: ProfileView!
+
+    //----------------------------------------------------------------------------------------------------------------
+    //=======>MARK: -  Life cycle methods ...
+    //----------------------------------------------------------------------------------------------------------------
     
     override func loadView() {
         let profileView = ProfileView()
@@ -31,9 +35,6 @@ class ProfileViewController: UIViewController {
         self.view = profileView
     }
     
-    //----------------------------------------------------------------------------------------------------------------
-    //=======>MARK: -  Life cycle methods ...
-    //----------------------------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -99,7 +100,7 @@ extension ProfileViewController {
             guard let self = self else { return cell }
             cell.setup(with: album)
             cell.tapGesture.tapPublisher.sink { _ in
-                print("cell has been tapped")
+                self.coordinator?.pushAlbumPhotosViewController(with: album.albumId)    
             }.store(in: &self.subscriptions)
             return cell
         }
