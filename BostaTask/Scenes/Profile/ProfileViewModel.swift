@@ -11,16 +11,19 @@ import Combine
 protocol ProfileViewModelProtocol: AnyObject {
     var isLoading: CurrentValueSubject<Bool, Never> { get }
     var randomUser: PassthroughSubject<User, Never> { get }
+    var userAlbums: CurrentValueSubject<[Album], Never> { get }
+
 }
 class ProfileViewModel: ProfileViewModelProtocol{
     private var anyCancellable = Set<AnyCancellable>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     var randomUser = PassthroughSubject<User, Never>()
+    var userAlbums = CurrentValueSubject<[Album], Never>([Album]())
     
     init() {
         getUsersList()
+        getUserData()
     }
-    
     
     private func getUsersList() {
         NetworkManager.shared().getUsersList().sink { compilation  in
@@ -29,17 +32,18 @@ class ProfileViewModel: ProfileViewModelProtocol{
             guard let self = self else { return }
             guard let randomUser = usersList.randomElement() else { return }
             self.randomUser.send(randomUser)
-            print(randomUser.address)
         }.store(in: &anyCancellable)
     }
     
     private func getUserData() {
-        randomUser.sink  { user in
-            NetworkManager.shared().getUsersList()
+        randomUser.map {
+            NetworkManager.shared().getUserAlbums(userId: $0.id)
         }
-
-        
-        
+        .flatMap({ $0 })
+        .sink { completion  in
+        } receiveValue: { [weak self] albumsList in
+            guard let self = self else { return }
+            self.userAlbums.send(albumsList)
+        }.store(in: &anyCancellable)
     }
-    
 }

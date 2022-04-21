@@ -7,6 +7,8 @@
 
 import UIKit
 
-class AlbumItemCollectionViewCell: UICollectionViewCell{
+class AlbumItemCollectionViewCell: UICollectionViewCell {
+    
+
     
 }

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  APIRouter.swift
 //  BostaTask
 //
 //  Created by Yousef Mohamed on 20/04/2022.
@@ -10,7 +10,7 @@ import Moya
 
 public enum APIRouter {
     case getUsers
-    case getUserAlbums(_ userId: String)
+    case getUserAlbums(_ userId: Int)
     case getAlbum
 }
 
@@ -46,7 +46,6 @@ extension APIRouter: TargetType {
             return .requestPlain
         }
     }
-    
     
     public var headers: [String : String]? {
         let headers = [

@@ -50,7 +50,7 @@ class ProfileView: UIView{
     }
     
     private func configureNameLabel() {
-        
+        userNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
     }
     
     private func configureAddressLabel(){
@@ -58,36 +58,13 @@ class ProfileView: UIView{
     }
     
     private func configureTableView() {
-
+        albumsTableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: Cells.albumCell)
+        albumsTableView.separatorStyle = .none
     }
     
     private func configureTableViewHeader() {
-        
     }
     
-//    private func layoutScrollView() {
-//        self.addSubview(scrollView)
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
-//            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
-//            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-//        ])
-//    }
-    
-//    private func layoutContentView() {
-//        scrollView.addSubview(contentView)
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-//            contentView.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-//            contentView.rightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.rightAnchor),
-//            contentView.widthAnchor.constraint(equalToConstant: scrollView.frameLayoutGuide.layoutFrame.width),
-//            contentView.heightAnchor.constraint(equalToConstant: scrollView.frameLayoutGuide.layoutFrame.height)
-//        ])
-//    }
     private func layoutUserInformationStack() {
         addSubview(userInformationStack)
         userInformationStack.translatesAutoresizingMaskIntoConstraints = false

@@ -24,6 +24,10 @@ class NetworkManager {
     func getUsersList() -> Future<[User], Error> {
         return request(target: APIRouter.getUsers)
     }
+    func getUserAlbums(userId: Int) -> Future<[Album], Error> {
+        return request(target: APIRouter.getUserAlbums(userId))
+    }
+    
 }
 
 private extension NetworkManager {

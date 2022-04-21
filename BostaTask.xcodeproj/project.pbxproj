@@ -11,6 +11,10 @@
 		86569B782810F5CA00CBD1EB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86569B772810F5CA00CBD1EB /* Address.swift */; };
 		86569B7D2810FB9A00CBD1EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86569B7C2810FB9A00CBD1EB /* Localizable.strings */; };
 		86569B802810FBEC00CBD1EB /* Colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86569B7F2810FBEC00CBD1EB /* Colors.txt */; };
+		86ABBA122811B08700912B42 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA112811B08700912B42 /* Album.swift */; };
+		86ABBA142812050000912B42 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA13281204FF00912B42 /* AlbumTableViewCell.swift */; };
+		86ABBA1628121CC900912B42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 86ABBA1528121CC900912B42 /* README.md */; };
+		86ABBA1A2812202A00912B42 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA192812202A00912B42 /* MainCoordinator.swift */; };
 		86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A069280F222A0032B636 /* AppDelegate.swift */; };
 		86B0A073280F222C0032B636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A072280F222C0032B636 /* Assets.xcassets */; };
 		86B0A076280F222C0032B636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A074280F222C0032B636 /* LaunchScreen.storyboard */; };
@@ -34,6 +38,10 @@
 		86569B772810F5CA00CBD1EB /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		86569B7C2810FB9A00CBD1EB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		86569B7F2810FBEC00CBD1EB /* Colors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Colors.txt; sourceTree = "<group>"; };
+		86ABBA112811B08700912B42 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		86ABBA13281204FF00912B42 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		86ABBA1528121CC900912B42 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		86ABBA192812202A00912B42 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		86B0A066280F222A0032B636 /* BostaTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostaTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B0A069280F222A0032B636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86B0A072280F222C0032B636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +97,22 @@
 			path = Colors;
 			sourceTree = "<group>";
 		};
+		86ABBA1728121FCE00912B42 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				86ABBA192812202A00912B42 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		86ABBA1828121FEC00912B42 /* StoryBoards  */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A074280F222C0032B636 /* LaunchScreen.storyboard */,
+			);
+			path = "StoryBoards ";
+			sourceTree = "<group>";
+		};
 		86B0A05D280F222A0032B636 = {
 			isa = PBXGroup;
 			children = (
@@ -108,14 +132,15 @@
 		86B0A068280F222A0032B636 /* BostaTask */ = {
 			isa = PBXGroup;
 			children = (
+				86ABBA1528121CC900912B42 /* README.md */,
 				86B0A080280F23E40032B636 /* Shared */,
+				86ABBA1728121FCE00912B42 /* Coordinator */,
 				86B0A081280F23EC0032B636 /* Networking */,
 				86B0A082280F24190032B636 /* Utilities */,
 				86B0A084280F24610032B636 /* Model */,
 				86B0A083280F24530032B636 /* CustomViews */,
 				86B0A085280F246D0032B636 /* Scenes */,
 				86B0A086280F24790032B636 /* Resources */,
-				86B0A074280F222C0032B636 /* LaunchScreen.storyboard */,
 				86B0A077280F222C0032B636 /* Info.plist */,
 			);
 			path = BostaTask;
@@ -150,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				86B0A0A1280F86920032B636 /* AlbumItemCollectionViewCell.swift */,
+				86ABBA13281204FF00912B42 /* AlbumTableViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -159,6 +185,7 @@
 			children = (
 				86B0A089280F24EA0032B636 /* User.swift */,
 				86569B772810F5CA00CBD1EB /* Address.swift */,
+				86ABBA112811B08700912B42 /* Album.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +205,7 @@
 				86569B7E2810FBC700CBD1EB /* Colors */,
 				86569B7B2810FB7E00CBD1EB /* Strings */,
 				86569B7A2810FB4000CBD1EB /* Assets */,
+				86ABBA1828121FEC00912B42 /* StoryBoards  */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -272,6 +300,7 @@
 			files = (
 				86B0A076280F222C0032B636 /* LaunchScreen.storyboard in Resources */,
 				86569B7D2810FB9A00CBD1EB /* Localizable.strings in Resources */,
+				86ABBA1628121CC900912B42 /* README.md in Resources */,
 				86569B802810FBEC00CBD1EB /* Colors.txt in Resources */,
 				86B0A073280F222C0032B636 /* Assets.xcassets in Resources */,
 			);
@@ -306,12 +335,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				86569B762810313D00CBD1EB /* NetworkManager.swift in Sources */,
+				86ABBA122811B08700912B42 /* Album.swift in Sources */,
 				86B0A09E280F85C90032B636 /* ProfileView.swift in Sources */,
 				86569B782810F5CA00CBD1EB /* Address.swift in Sources */,
 				86B0A092280F2E780032B636 /* ProfileViewModel.swift in Sources */,
+				86ABBA142812050000912B42 /* AlbumTableViewCell.swift in Sources */,
 				86B0A08E280F25930032B636 /* ProfileViewController.swift in Sources */,
 				86B0A0A0280F86020032B636 /* AlbumView.swift in Sources */,
 				86B0A094280F34680032B636 /* AlboumViewModel.swift in Sources */,
+				86ABBA1A2812202A00912B42 /* MainCoordinator.swift in Sources */,
 				86B0A0A2280F86920032B636 /* AlbumItemCollectionViewCell.swift in Sources */,
 				86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */,
 				86B0A08A280F24EA0032B636 /* User.swift in Sources */,
@@ -386,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -441,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

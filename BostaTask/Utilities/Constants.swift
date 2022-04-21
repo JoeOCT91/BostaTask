@@ -23,3 +23,8 @@ struct ParametersKeys {
     static let userId = "userId"
 }
 
+struct Cells {
+    static let albumCell = "AlbumCell"
+    static let albumItemCell = "AlbumItemCell"
+}
+
