@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		86569B762810313D00CBD1EB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86569B752810313D00CBD1EB /* NetworkManager.swift */; };
+		86569B782810F5CA00CBD1EB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86569B772810F5CA00CBD1EB /* Address.swift */; };
+		86569B7D2810FB9A00CBD1EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86569B7C2810FB9A00CBD1EB /* Localizable.strings */; };
+		86569B802810FBEC00CBD1EB /* Colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86569B7F2810FBEC00CBD1EB /* Colors.txt */; };
 		86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A069280F222A0032B636 /* AppDelegate.swift */; };
-		86B0A071280F222A0032B636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A06F280F222A0032B636 /* Main.storyboard */; };
 		86B0A073280F222C0032B636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A072280F222C0032B636 /* Assets.xcassets */; };
 		86B0A076280F222C0032B636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A074280F222C0032B636 /* LaunchScreen.storyboard */; };
 		86B0A07F280F23D60032B636 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 86B0A07E280F23D60032B636 /* CombineCocoa */; };
@@ -29,9 +31,11 @@
 
 /* Begin PBXFileReference section */
 		86569B752810313D00CBD1EB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		86569B772810F5CA00CBD1EB /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		86569B7C2810FB9A00CBD1EB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		86569B7F2810FBEC00CBD1EB /* Colors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Colors.txt; sourceTree = "<group>"; };
 		86B0A066280F222A0032B636 /* BostaTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostaTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B0A069280F222A0032B636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86B0A070280F222A0032B636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86B0A072280F222C0032B636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86B0A075280F222C0032B636 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86B0A077280F222C0032B636 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +65,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86569B7A2810FB4000CBD1EB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A072280F222C0032B636 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		86569B7B2810FB7E00CBD1EB /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				86569B7C2810FB9A00CBD1EB /* Localizable.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		86569B7E2810FBC700CBD1EB /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				86569B7F2810FBEC00CBD1EB /* Colors.txt */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		86B0A05D280F222A0032B636 = {
 			isa = PBXGroup;
 			children = (
@@ -87,8 +115,6 @@
 				86B0A083280F24530032B636 /* CustomViews */,
 				86B0A085280F246D0032B636 /* Scenes */,
 				86B0A086280F24790032B636 /* Resources */,
-				86B0A06F280F222A0032B636 /* Main.storyboard */,
-				86B0A072280F222C0032B636 /* Assets.xcassets */,
 				86B0A074280F222C0032B636 /* LaunchScreen.storyboard */,
 				86B0A077280F222C0032B636 /* Info.plist */,
 			);
@@ -132,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				86B0A089280F24EA0032B636 /* User.swift */,
+				86569B772810F5CA00CBD1EB /* Address.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +175,9 @@
 		86B0A086280F24790032B636 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				86569B7E2810FBC700CBD1EB /* Colors */,
+				86569B7B2810FB7E00CBD1EB /* Strings */,
+				86569B7A2810FB4000CBD1EB /* Assets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -179,6 +209,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86B0A07A280F222C0032B636 /* Build configuration list for PBXNativeTarget "BostaTask" */;
 			buildPhases = (
+				86569B792810FA7800CBD1EB /* Swift Gen run script */,
 				86B0A062280F222A0032B636 /* Sources */,
 				86B0A063280F222A0032B636 /* Frameworks */,
 				86B0A064280F222A0032B636 /* Resources */,
@@ -240,12 +271,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B0A076280F222C0032B636 /* LaunchScreen.storyboard in Resources */,
+				86569B7D2810FB9A00CBD1EB /* Localizable.strings in Resources */,
+				86569B802810FBEC00CBD1EB /* Colors.txt in Resources */,
 				86B0A073280F222C0032B636 /* Assets.xcassets in Resources */,
-				86B0A071280F222A0032B636 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		86569B792810FA7800CBD1EB /* Swift Gen run script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Gen run script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\nif [[ -f \"${PROJECT_DIR}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PROJECT_DIR}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		86B0A062280F222A0032B636 /* Sources */ = {
@@ -254,6 +307,7 @@
 			files = (
 				86569B762810313D00CBD1EB /* NetworkManager.swift in Sources */,
 				86B0A09E280F85C90032B636 /* ProfileView.swift in Sources */,
+				86569B782810F5CA00CBD1EB /* Address.swift in Sources */,
 				86B0A092280F2E780032B636 /* ProfileViewModel.swift in Sources */,
 				86B0A08E280F25930032B636 /* ProfileViewController.swift in Sources */,
 				86B0A0A0280F86020032B636 /* AlbumView.swift in Sources */,
@@ -270,14 +324,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		86B0A06F280F222A0032B636 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				86B0A070280F222A0032B636 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		86B0A074280F222C0032B636 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

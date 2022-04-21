@@ -1,0 +1,18 @@
+
+xcassets:
+  inputs: BostaTask/Resources/Assets/Assets.xcassets
+  outputs:
+    templateName: swift5
+    output: BostaTask/Resources/Assets/AssetsManager.swift
+
+strings:
+  inputs: BostaTask/Resources/Strings/Localizable.strings
+  outputs:
+    templateName: structured-swift5
+    output: BostaTask/Resources/Strings/Strings.swift
+
+colors:
+  inputs: BostaTask/Resources/Colors/Colors.txt
+  outputs:
+    templateName: swift5
+    output: BostaTask/Resources/Colors/ColorsManager.swift
