@@ -14,6 +14,13 @@ struct Address: Codable {
     let city: String
     let zipCode: String?
     
+    enum CodingKeys: String, CodingKey {
+        case street
+        case suite
+        case city
+        case zipCode = "zipcode"
+    }
+    
     var fullAddress: String {
         get {
             var address = "\(street), \(suite), \(city)"

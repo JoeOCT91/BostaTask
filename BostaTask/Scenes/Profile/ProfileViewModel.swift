@@ -16,7 +16,6 @@ class ProfileViewModel: ProfileViewModelProtocol{
     private var anyCancellable = Set<AnyCancellable>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     var randomUser = PassthroughSubject<User, Never>()
-    var usersList = PassthroughSubject<[User], Never>()
     
     init() {
         getUsersList()
@@ -35,6 +34,10 @@ class ProfileViewModel: ProfileViewModelProtocol{
     }
     
     private func getUserData() {
+        randomUser.sink  { user in
+            NetworkManager.shared().getUsersList()
+        }
+
         
         
     }

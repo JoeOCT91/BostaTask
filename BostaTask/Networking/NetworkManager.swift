@@ -44,5 +44,4 @@ private extension NetworkManager {
             }
         }
     }
-
 }

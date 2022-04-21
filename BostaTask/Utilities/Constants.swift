@@ -19,3 +19,7 @@ struct HeaderKeys {
     static let accept = "accept"
 }
 
+struct ParametersKeys {
+    static let userId = "userId"
+}
+

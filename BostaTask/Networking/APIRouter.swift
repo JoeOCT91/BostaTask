@@ -10,7 +10,7 @@ import Moya
 
 public enum APIRouter {
     case getUsers
-    case getUser
+    case getUserAlbums(_ userId: String)
     case getAlbum
 }
 
@@ -25,7 +25,7 @@ extension APIRouter: TargetType {
         switch self {
         case .getUsers:
             return URLs.users
-        case .getUser:
+        case .getUserAlbums:
             return URLs.albums
         case .getAlbum:
             return URLs.photos
@@ -38,9 +38,14 @@ extension APIRouter: TargetType {
     }
     
     public var task: Task {
-        // Since no additional data to add to request will return planRequest fro now :)
-        return .requestPlain
+        switch self {
+        case .getUserAlbums(let userId):
+            let parameters = [ParametersKeys.userId: userId]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        default:
+            return .requestPlain
         }
+    }
     
     
     public var headers: [String : String]? {
@@ -50,6 +55,4 @@ extension APIRouter: TargetType {
         ]
         return headers
     }
-
-
 }
