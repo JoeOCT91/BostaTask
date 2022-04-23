@@ -41,6 +41,10 @@ class AlbumPhotosViewController: UIViewController {
         configureSearchBar()
     }
     
+    deinit {
+        print("has been deinitlized \(String(describing: self)) ")
+    }
+    
     class func create(coordinator: MainCoordinator, album: Album) -> AlbumPhotosViewController {
         let viewController = AlbumPhotosViewController()
         let viewModel = AlbumPhotosViewModel(album: album)
@@ -76,12 +80,13 @@ extension AlbumPhotosViewController {
     }
     
     private func configureDataSource() {
-        dataSource = DataSource(collectionView: albumPhotosView.albumCollectionView) { collectionView, indexPath, albumPhoto in
+        dataSource = DataSource(collectionView: albumPhotosView.albumCollectionView) { [weak self] collectionView, indexPath, albumPhoto in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.albumItemCell, for: indexPath) as! AlbumItemCollectionViewCell
+            guard let self = self else { return cell }
             cell.setup(albumPhoto: albumPhoto)
             cell.tapSubscription = cell.tapGesture.tapPublisher.sink { [weak self] _ in
-                print("cell at index path : \(indexPath) has been clicked")
                 guard let self = self else { return }
+                print("cell at index path : \(indexPath) has been clicked")
                 self.coordinator?.pushImageViewerViewController(with: albumPhoto)
             }
             return cell
@@ -105,5 +110,9 @@ extension AlbumPhotosViewController {
             guard let self = self else { return }
             self.albumPhotosView.albumCollectionView.scrollsToTop = true
         }.store(in: &subscriptions)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("didReceiveMemoryWarning")
     }
 }

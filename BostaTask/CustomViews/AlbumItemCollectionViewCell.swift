@@ -7,7 +7,7 @@
 
 import UIKit
 import Combine
-import SDWebImage
+
 
 class AlbumItemCollectionViewCell: UICollectionViewCell {
     
@@ -29,14 +29,10 @@ class AlbumItemCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         tapSubscription = nil
-        imageView.sd_cancelCurrentImageLoad()
     }
     
     func setup(albumPhoto: AlbumPhoto) {
-        let url = URL(string: albumPhoto.thumbnailUrl)
-        SDImageCache.shared.config.shouldCacheImagesInMemory = false
-        imageView.sd_setImage(with: url, placeholderImage: nil, options: .scaleDownLargeImages) { image, error, cacheType, url in
-        }
+
     }
 
     private func configureContainerView() {

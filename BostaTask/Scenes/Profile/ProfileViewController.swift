@@ -13,10 +13,17 @@ class ProfileViewController: UIViewController {
     //----------------------------------------------------------------------------------------------------------------
     //=======>MARK: -  Properties ...
     //----------------------------------------------------------------------------------------------------------------
-    private enum Section: Hashable {
+    private enum Section: SectionProtocol {
         case main
+        var header: String {
+            switch self {
+            case .main:
+                return L10n.myAlbumsSection
+            }
+        }
     }
-    private typealias DataSource = UITableViewDiffableDataSource<Section, Album>
+
+    private typealias DataSource = DataSourceWithSectionsHeader<Section, Album>
     private typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Album>
     private var dataSource: DataSource!
     
@@ -42,6 +49,13 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         bindToDataStreamsAndUserInteractions()
         configureDataSource()
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
+    deinit {
+        print("has been deinitlized \(String(describing: self)) ")
     }
     
     //----------------------------------------------------------------------------------------------------------------
@@ -100,5 +114,6 @@ extension ProfileViewController {
             }.store(in: &self.cellsTapsSubscriptions, for: indexPath)
             return cell
         }
+        
     }
 }
