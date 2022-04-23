@@ -15,6 +15,12 @@
 		86ABBA142812050000912B42 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA13281204FF00912B42 /* AlbumTableViewCell.swift */; };
 		86ABBA1628121CC900912B42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 86ABBA1528121CC900912B42 /* README.md */; };
 		86ABBA1A2812202A00912B42 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA192812202A00912B42 /* MainCoordinator.swift */; };
+		86ABBA1C2812479400912B42 /* AlbumPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA1B2812479400912B42 /* AlbumPhoto.swift */; };
+		86ABBA1F281254E200912B42 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 86ABBA1E281254E200912B42 /* SDWebImage */; };
+		86ABBA232812675C00912B42 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA222812675C00912B42 /* Strings.swift */; };
+		86ABBA262813233D00912B42 /* Combine+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA252813233D00912B42 /* Combine+Dictionary.swift */; };
+		86ABBA29281372C900912B42 /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA28281372C900912B42 /* ImageViewerViewController.swift */; };
+		86ABBA2B281373AF00912B42 /* ImageViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA2A281373AF00912B42 /* ImageViewerView.swift */; };
 		86B0A06A280F222A0032B636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A069280F222A0032B636 /* AppDelegate.swift */; };
 		86B0A073280F222C0032B636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A072280F222C0032B636 /* Assets.xcassets */; };
 		86B0A076280F222C0032B636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A074280F222C0032B636 /* LaunchScreen.storyboard */; };
@@ -42,6 +48,11 @@
 		86ABBA13281204FF00912B42 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		86ABBA1528121CC900912B42 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		86ABBA192812202A00912B42 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		86ABBA1B2812479400912B42 /* AlbumPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlbumPhoto.swift; path = ../../../AlbumPhoto.swift; sourceTree = "<group>"; };
+		86ABBA222812675C00912B42 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		86ABBA252813233D00912B42 /* Combine+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Dictionary.swift"; sourceTree = "<group>"; };
+		86ABBA28281372C900912B42 /* ImageViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageViewerViewController.swift; path = ../../../../ImageViewerViewController.swift; sourceTree = "<group>"; };
+		86ABBA2A281373AF00912B42 /* ImageViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerView.swift; sourceTree = "<group>"; };
 		86B0A066280F222A0032B636 /* BostaTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BostaTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B0A069280F222A0032B636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86B0A072280F222C0032B636 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +77,7 @@
 			files = (
 				86B0A09A280F855C0032B636 /* CombineMoya in Frameworks */,
 				86B0A07F280F23D60032B636 /* CombineCocoa in Frameworks */,
+				86ABBA1F281254E200912B42 /* SDWebImage in Frameworks */,
 				86B0A09C280F855C0032B636 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +96,7 @@
 		86569B7B2810FB7E00CBD1EB /* Strings */ = {
 			isa = PBXGroup;
 			children = (
+				86ABBA222812675C00912B42 /* Strings.swift */,
 				86569B7C2810FB9A00CBD1EB /* Localizable.strings */,
 			);
 			path = Strings;
@@ -113,6 +126,23 @@
 			path = "StoryBoards ";
 			sourceTree = "<group>";
 		};
+		86ABBA242813232600912B42 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				86ABBA252813233D00912B42 /* Combine+Dictionary.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86ABBA272813728200912B42 /* ImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				86ABBA28281372C900912B42 /* ImageViewerViewController.swift */,
+				86ABBA2A281373AF00912B42 /* ImageViewerView.swift */,
+			);
+			path = ImageViewer;
+			sourceTree = "<group>";
+		};
 		86B0A05D280F222A0032B636 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +162,7 @@
 		86B0A068280F222A0032B636 /* BostaTask */ = {
 			isa = PBXGroup;
 			children = (
+				86ABBA242813232600912B42 /* Extensions */,
 				86ABBA1528121CC900912B42 /* README.md */,
 				86B0A080280F23E40032B636 /* Shared */,
 				86ABBA1728121FCE00912B42 /* Coordinator */,
@@ -186,6 +217,7 @@
 				86B0A089280F24EA0032B636 /* User.swift */,
 				86569B772810F5CA00CBD1EB /* Address.swift */,
 				86ABBA112811B08700912B42 /* Album.swift */,
+				86ABBA1B2812479400912B42 /* AlbumPhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +225,7 @@
 		86B0A085280F246D0032B636 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				86ABBA272813728200912B42 /* ImageViewer */,
 				86B0A08B280F253A0032B636 /* Profile */,
 				86B0A08C280F25570032B636 /* Album */,
 			);
@@ -251,6 +284,7 @@
 				86B0A07E280F23D60032B636 /* CombineCocoa */,
 				86B0A099280F855C0032B636 /* CombineMoya */,
 				86B0A09B280F855C0032B636 /* Moya */,
+				86ABBA1E281254E200912B42 /* SDWebImage */,
 			);
 			productName = BostaTask;
 			productReference = 86B0A066280F222A0032B636 /* BostaTask.app */;
@@ -283,6 +317,7 @@
 			packageReferences = (
 				86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 				86B0A098280F855C0032B636 /* XCRemoteSwiftPackageReference "Moya" */,
+				86ABBA1D281254E200912B42 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 86B0A067280F222A0032B636 /* Products */;
 			projectDirPath = "";
@@ -337,7 +372,11 @@
 				86569B762810313D00CBD1EB /* NetworkManager.swift in Sources */,
 				86ABBA122811B08700912B42 /* Album.swift in Sources */,
 				86B0A09E280F85C90032B636 /* ProfileView.swift in Sources */,
+				86ABBA262813233D00912B42 /* Combine+Dictionary.swift in Sources */,
+				86ABBA1C2812479400912B42 /* AlbumPhoto.swift in Sources */,
 				86569B782810F5CA00CBD1EB /* Address.swift in Sources */,
+				86ABBA2B281373AF00912B42 /* ImageViewerView.swift in Sources */,
+				86ABBA232812675C00912B42 /* Strings.swift in Sources */,
 				86B0A092280F2E780032B636 /* ProfileViewModel.swift in Sources */,
 				86ABBA142812050000912B42 /* AlbumTableViewCell.swift in Sources */,
 				86B0A08E280F25930032B636 /* ProfileViewController.swift in Sources */,
@@ -349,6 +388,7 @@
 				86B0A08A280F24EA0032B636 /* User.swift in Sources */,
 				86B0A088280F24C10032B636 /* Constants.swift in Sources */,
 				86B0A0A4280FA59D0032B636 /* APIRouter.swift in Sources */,
+				86ABBA29281372C900912B42 /* ImageViewerViewController.swift in Sources */,
 				86B0A090280F25A60032B636 /* AlbumPhotosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +603,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		86ABBA1D281254E200912B42 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
@@ -582,6 +630,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		86ABBA1E281254E200912B42 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86ABBA1D281254E200912B42 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		86B0A07E280F23D60032B636 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */;

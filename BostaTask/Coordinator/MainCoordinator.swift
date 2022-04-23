@@ -11,6 +11,7 @@ protocol AppCoordinator: AnyObject {
     var navigationController: UINavigationController { get }
     func start()
 }
+
 class MainCoordinator: AppCoordinator {
     
     let navigationController: UINavigationController
@@ -25,10 +26,13 @@ class MainCoordinator: AppCoordinator {
         navigationController.viewControllers = [viewController]
     }
     
-    func pushAlbumPhotosViewController(with albumId: Int) {
-        let viewController = ProfileViewController.create(coordinator: self)
+    func pushAlbumPhotosViewController(with album: Album) {
+        let viewController = AlbumPhotosViewController.create(coordinator: self, album: album)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    
+    func pushImageViewerViewController(with albumPhoto: AlbumPhoto) {
+        let viewController = ImageViewerViewController.create(albumPhoto: albumPhoto)
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

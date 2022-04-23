@@ -15,8 +15,8 @@ class AlbumPhotosViewController: UIViewController {
     private enum Section: Hashable {
         case main
     }
-    private typealias DataSource = UITableViewDiffableDataSource<Section, Album>
-    private typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Album>
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, AlbumPhoto>
+    private typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, AlbumPhoto>
     private var dataSource: DataSource!
     
     private weak var coordinator: MainCoordinator?
@@ -28,17 +28,82 @@ class AlbumPhotosViewController: UIViewController {
     //=======>MARK: -  Life cycle methods ...
     //----------------------------------------------------------------------------------------------------------------
     override func loadView() {
-        let albumPhotosView = albumPhotosView()
+        let albumPhotosView = AlbumPhotosView()
         self.albumPhotosView = albumPhotosView
         self.view = albumPhotosView
     }
     
-    class func create(coordinator: MainCoordinator, albumId: Int) -> AlbumPhotosViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = viewModel.album.albumTitle
+        bindToDataStreamsAndUserInteractions()
+        configureDataSource()
+        configureSearchBar()
+    }
+    
+    class func create(coordinator: MainCoordinator, album: Album) -> AlbumPhotosViewController {
         let viewController = AlbumPhotosViewController()
-        let viewModel = AlbumPhotosViewModel(albumId: albumId)
+        let viewModel = AlbumPhotosViewModel(album: album)
         viewController.coordinator = coordinator
         viewController.viewModel = viewModel
         return viewController
     }
     
+}
+extension AlbumPhotosViewController {
+    //----------------------------------------------------------------------------------------------------------------
+    //=======>MARK: -  Private methods ...
+    //----------------------------------------------------------------------------------------------------------------
+    private func bindToDataStreamsAndUserInteractions() {
+        bindToAlbumPhotosDataStream()
+        bindToSearchBarCancelTapUserInteraction()
+    }
+    
+    private func bindToAlbumPhotosDataStream() {
+        viewModel.albumPhotosList.sink { [weak self] photosList in
+            guard let self = self else { return }
+            var snapshot = DataSourceSnapshot()
+            snapshot.appendSections([Section.main])
+            snapshot.appendItems(photosList)
+            self.updateDataSource(snapshot: snapshot)
+        }.store(in: &subscriptions)
+    }
+    
+    private func updateDataSource(snapshot: DataSourceSnapshot) {
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
+    }
+    
+    private func configureDataSource() {
+        dataSource = DataSource(collectionView: albumPhotosView.albumCollectionView) { collectionView, indexPath, albumPhoto in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.albumItemCell, for: indexPath) as! AlbumItemCollectionViewCell
+            cell.setup(albumPhoto: albumPhoto)
+            cell.tapSubscription = cell.tapGesture.tapPublisher.sink { [weak self] _ in
+                print("cell at index path : \(indexPath) has been clicked")
+                guard let self = self else { return }
+                self.coordinator?.pushImageViewerViewController(with: albumPhoto)
+            }
+            return cell
+        }
+    }
+    
+    private func configureSearchBar() {
+        navigationItem.searchController = albumPhotosView.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        albumPhotosView.searchController.searchBar.searchTextField.textPublisher
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .compactMap( { $0 })
+            .sink { [weak self] searchKeyword in
+                guard let self = self else { return }
+                self.viewModel.searchKeyWord.send(searchKeyword)
+            }.store(in: &subscriptions)
+    }
+    
+    private func bindToSearchBarCancelTapUserInteraction() {
+        albumPhotosView.searchController.searchBar.cancelButtonClickedPublisher.sink { [weak self] _ in
+            guard let self = self else { return }
+            self.albumPhotosView.albumCollectionView.scrollsToTop = true
+        }.store(in: &subscriptions)
+    }
 }

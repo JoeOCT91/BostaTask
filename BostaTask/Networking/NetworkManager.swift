@@ -11,21 +11,28 @@ import Moya
 
 class NetworkManager {
     
-    private var provider = MoyaProvider<APIRouter>(plugins: [NetworkLoggerPlugin()])
+    private var provider = MoyaProvider<APIRouter>()
     private static let sharedInstance = NetworkManager()
+    
+    // Private Init
+    private init() {}
     
     class func shared() -> NetworkManager {
         return NetworkManager.sharedInstance
     }
     
-    // Private Init
-    private init() {}
+
     
     func getUsersList() -> Future<[User], Error> {
         return request(target: APIRouter.getUsers)
     }
+    
     func getUserAlbums(userId: Int) -> Future<[Album], Error> {
         return request(target: APIRouter.getUserAlbums(userId))
+    }
+    
+    func getAlbumPhotos(albumId: Int)  -> Future<[AlbumPhoto], Error>  {
+        return request(target: APIRouter.getAlbum(albumId))
     }
     
 }

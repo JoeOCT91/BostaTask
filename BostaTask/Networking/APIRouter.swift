@@ -11,7 +11,7 @@ import Moya
 public enum APIRouter {
     case getUsers
     case getUserAlbums(_ userId: Int)
-    case getAlbum
+    case getAlbum(_ albumId: Int)
 }
 
 extension APIRouter: TargetType {
@@ -41,6 +41,9 @@ extension APIRouter: TargetType {
         switch self {
         case .getUserAlbums(let userId):
             let parameters = [ParametersKeys.userId: userId]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getAlbum(let albumId):
+            let parameters = [ParametersKeys.userId: albumId]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         default:
             return .requestPlain

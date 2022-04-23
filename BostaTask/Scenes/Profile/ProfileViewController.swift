@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
     
     private weak var coordinator: MainCoordinator?
     private var subscriptions = Set<AnyCancellable>()
+    private var cellsTapsSubscriptions = Dictionary<IndexPath, AnyCancellable>()
     private var viewModel: ProfileViewModelProtocol!
     private var profileView: ProfileView!
 
@@ -37,6 +38,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = L10n.profileViewControllerTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         bindToDataStreamsAndUserInteractions()
         configureDataSource()
@@ -45,12 +47,6 @@ class ProfileViewController: UIViewController {
     //----------------------------------------------------------------------------------------------------------------
     //=======>MARK: -  Public methods ...
     //----------------------------------------------------------------------------------------------------------------
-    class func create() -> ProfileViewController {
-        let viewController = ProfileViewController()
-        let viewModel = ProfileViewModel()
-        viewController.viewModel = viewModel
-        return viewController
-    }
     class func create(coordinator: MainCoordinator) -> ProfileViewController {
         let viewController = ProfileViewController()
         let viewModel = ProfileViewModel()
@@ -100,8 +96,8 @@ extension ProfileViewController {
             guard let self = self else { return cell }
             cell.setup(with: album)
             cell.tapGesture.tapPublisher.sink { _ in
-                self.coordinator?.pushAlbumPhotosViewController(with: album.albumId)    
-            }.store(in: &self.subscriptions)
+                self.coordinator?.pushAlbumPhotosViewController(with: album)
+            }.store(in: &self.cellsTapsSubscriptions, for: indexPath)
             return cell
         }
     }

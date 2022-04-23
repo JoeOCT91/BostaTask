@@ -8,13 +8,12 @@
 import Foundation
 
 struct Album: Codable, Hashable {
+    
     let uuid = UUID()
-    let userId: Int
     let albumId: Int
     let albumTitle: String
     
     enum CodingKeys: String, CodingKey {
-        case userId
         case albumId = "id"
         case albumTitle = "title"
     }
