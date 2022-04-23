@@ -12,6 +12,7 @@
 		86569B7D2810FB9A00CBD1EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86569B7C2810FB9A00CBD1EB /* Localizable.strings */; };
 		86569B802810FBEC00CBD1EB /* Colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86569B7F2810FBEC00CBD1EB /* Colors.txt */; };
 		8671436B28147342009B8EA7 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8671436A28147342009B8EA7 /* CombineMoya */; };
+		8671436E2814773A009B8EA7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8671436D2814773A009B8EA7 /* Kingfisher */; };
 		86ABBA122811B08700912B42 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA112811B08700912B42 /* Album.swift */; };
 		86ABBA142812050000912B42 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABBA13281204FF00912B42 /* AlbumTableViewCell.swift */; };
 		86ABBA1628121CC900912B42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 86ABBA1528121CC900912B42 /* README.md */; };
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8671436E2814773A009B8EA7 /* Kingfisher in Frameworks */,
 				8671436B28147342009B8EA7 /* CombineMoya in Frameworks */,
 				86B0A07F280F23D60032B636 /* CombineCocoa in Frameworks */,
 			);
@@ -282,6 +284,7 @@
 			packageProductDependencies = (
 				86B0A07E280F23D60032B636 /* CombineCocoa */,
 				8671436A28147342009B8EA7 /* CombineMoya */,
+				8671436D2814773A009B8EA7 /* Kingfisher */,
 			);
 			productName = BostaTask;
 			productReference = 86B0A066280F222A0032B636 /* BostaTask.app */;
@@ -314,6 +317,7 @@
 			packageReferences = (
 				86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 				8671436928147342009B8EA7 /* XCRemoteSwiftPackageReference "Moya" */,
+				8671436C2814773A009B8EA7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 86B0A067280F222A0032B636 /* Products */;
 			projectDirPath = "";
@@ -608,6 +612,14 @@
 				kind = branch;
 			};
 		};
+		8671436C2814773A009B8EA7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		86B0A07D280F23D60032B636 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
@@ -623,6 +635,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8671436928147342009B8EA7 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = CombineMoya;
+		};
+		8671436D2814773A009B8EA7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8671436C2814773A009B8EA7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		86B0A07E280F23D60032B636 /* CombineCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
