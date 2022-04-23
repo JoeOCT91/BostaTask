@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ImageViewerView: UIView {
     
@@ -26,9 +27,18 @@ class ImageViewerView: UIView {
         scrollView.delegate = self
         downloadFullSizeImage(albumPhoto: albumPhoto)
     }
+    
     private func downloadFullSizeImage(albumPhoto: AlbumPhoto) {
         let url = URL(string: albumPhoto.url)
-
+        ImageCache.default.retrieveImage(forKey: albumPhoto.thumbnailUrl) { [weak self] compilation in
+            guard let self = self else { return }
+            switch compilation {
+            case .success(let value):
+                self.imageView.kf.setImage(with: url, placeholder: value.image)
+            case .failure(_):
+                self.imageView.kf.setImage(with: url)
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -67,8 +77,6 @@ class ImageViewerView: UIView {
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalTo: scrollView.widthAnchor),
             imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-
         ])
     }
     

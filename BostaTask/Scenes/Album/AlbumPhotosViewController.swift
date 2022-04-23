@@ -7,8 +7,11 @@
 
 import UIKit
 import Combine
+import Kingfisher
 
 class AlbumPhotosViewController: UIViewController {
+
+    
     //----------------------------------------------------------------------------------------------------------------
     //=======>MARK: -  Properties ...
     //----------------------------------------------------------------------------------------------------------------
@@ -27,6 +30,7 @@ class AlbumPhotosViewController: UIViewController {
     //----------------------------------------------------------------------------------------------------------------
     //=======>MARK: -  Life cycle methods ...
     //----------------------------------------------------------------------------------------------------------------
+    
     override func loadView() {
         let albumPhotosView = AlbumPhotosView()
         self.albumPhotosView = albumPhotosView
@@ -36,6 +40,7 @@ class AlbumPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.album.albumTitle
+        albumPhotosView.albumCollectionView.prefetchDataSource = self
         bindToDataStreamsAndUserInteractions()
         configureDataSource()
         configureSearchBar()
@@ -52,12 +57,13 @@ class AlbumPhotosViewController: UIViewController {
         viewController.viewModel = viewModel
         return viewController
     }
-    
 }
 extension AlbumPhotosViewController {
+    
     //----------------------------------------------------------------------------------------------------------------
     //=======>MARK: -  Private methods ...
     //----------------------------------------------------------------------------------------------------------------
+    
     private func bindToDataStreamsAndUserInteractions() {
         bindToAlbumPhotosDataStream()
         bindToSearchBarCancelTapUserInteraction()
@@ -86,7 +92,6 @@ extension AlbumPhotosViewController {
             cell.setup(albumPhoto: albumPhoto)
             cell.tapSubscription = cell.tapGesture.tapPublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                print("cell at index path : \(indexPath) has been clicked")
                 self.coordinator?.pushImageViewerViewController(with: albumPhoto)
             }
             return cell
@@ -108,11 +113,25 @@ extension AlbumPhotosViewController {
     private func bindToSearchBarCancelTapUserInteraction() {
         albumPhotosView.searchController.searchBar.cancelButtonClickedPublisher.sink { [weak self] _ in
             guard let self = self else { return }
-            self.albumPhotosView.albumCollectionView.scrollsToTop = true
+            self.albumPhotosView.albumCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         }.store(in: &subscriptions)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print("didReceiveMemoryWarning")
+}
+
+extension AlbumPhotosViewController: UICollectionViewDataSourcePrefetching {
+    
+    //----------------------------------------------------------------------------------------------------------------
+    //=======>MARK: -  DataSource Prefetching delegate methods
+    //----------------------------------------------------------------------------------------------------------------
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        guard let currentDataList = dataSource?.snapshot().itemIdentifiers else { return }
+        let urls = indexPaths.compactMap { indexPath -> URL? in
+            return URL(string: currentDataList[indexPath.item].thumbnailUrl)
+        }
+        let prefetcher = ImagePrefetcher(urls: urls) { skippedResources, failedResources, completedResources in
+            print("These resources are prefetched: \(completedResources)")
+        }
+        prefetcher.start()
     }
 }

@@ -60,7 +60,7 @@ class AlbumTableViewCell: UITableViewCell {
     }
     
     private func configureAlbumTitleLabel() {
-        albumTitleLabel.font = .systemFont(ofSize: 18, weight: .regular)
-        albumTitleLabel.minimumScaleFactor = 0.75
+        albumTitleLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        albumTitleLabel.minimumScaleFactor = 0.70
     }
 }

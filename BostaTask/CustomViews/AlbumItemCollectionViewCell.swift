@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Kingfisher
 
 
 class AlbumItemCollectionViewCell: UICollectionViewCell {
@@ -15,6 +16,7 @@ class AlbumItemCollectionViewCell: UICollectionViewCell {
     let containerView = UIView(frame: .zero)
     let imageView = UIImageView(frame: .zero)
     let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+    private var downloadTask: DownloadTask?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -28,11 +30,14 @@ class AlbumItemCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        downloadTask?.cancel()
         tapSubscription = nil
     }
     
     func setup(albumPhoto: AlbumPhoto) {
-
+        let url = URL(string: albumPhoto.thumbnailUrl)
+        imageView.kf.indicatorType = .activity
+        downloadTask = imageView.kf.setImage(with: url)
     }
 
     private func configureContainerView() {

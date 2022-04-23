@@ -51,6 +51,7 @@ class AlbumPhotosViewModel: AlbumPhotosViewModelProtocol {
             }
         }.store(in: &anyCancellable)
     }
+    
     deinit {
         print("View model has been deinitlized \(String(describing: self))")
     }
