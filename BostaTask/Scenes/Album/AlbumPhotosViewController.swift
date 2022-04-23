@@ -45,10 +45,14 @@ class AlbumPhotosViewController: UIViewController {
         configureDataSource()
         configureSearchBar()
     }
-    
+
     deinit {
         print("has been deinitlized \(String(describing: self)) ")
     }
+    
+    //----------------------------------------------------------------------------------------------------------------
+    //=======>MARK: -  Public methods ...
+    //----------------------------------------------------------------------------------------------------------------
     
     class func create(coordinator: MainCoordinator, album: Album) -> AlbumPhotosViewController {
         let viewController = AlbumPhotosViewController()
@@ -129,9 +133,7 @@ extension AlbumPhotosViewController: UICollectionViewDataSourcePrefetching {
         let urls = indexPaths.compactMap { indexPath -> URL? in
             return URL(string: currentDataList[indexPath.item].thumbnailUrl)
         }
-        let prefetcher = ImagePrefetcher(urls: urls) { skippedResources, failedResources, completedResources in
-            print("These resources are prefetched: \(completedResources)")
-        }
+        let prefetcher = ImagePrefetcher(urls: urls)
         prefetcher.start()
     }
 }

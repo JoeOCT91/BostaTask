@@ -8,12 +8,20 @@
 import UIKit
 
 protocol AppCoordinator: AnyObject {
+    var childCoordinators: [ChildCoordinator] { get set }
     var navigationController: UINavigationController { get }
+    func start()
+}
+
+protocol ChildCoordinator: AnyObject {
+    var navigationController: UINavigationController { get set }
+    var parentCoordinator: AppCoordinator? { get } // must be a weak reference
     func start()
 }
 
 class MainCoordinator: AppCoordinator {
     
+    var childCoordinators = [ChildCoordinator]()
     let navigationController: UINavigationController
     
     

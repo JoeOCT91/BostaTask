@@ -36,7 +36,6 @@ class AlbumPhotosViewModel: AlbumPhotosViewModelProtocol {
             guard let self = self else { return }
             self.originalAlbumPhotosList = photosList
             self.albumPhotosList.send(photosList)
-            print(photosList.count)
         }.store(in: &anyCancellable)
     }
     

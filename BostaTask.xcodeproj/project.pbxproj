@@ -205,9 +205,9 @@
 		86B0A083280F24530032B636 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				86ABBA2C2813BD9C00912B42 /* DataSourceWithSectionsHeader.swift */,
 				86B0A0A1280F86920032B636 /* AlbumItemCollectionViewCell.swift */,
 				86ABBA13281204FF00912B42 /* AlbumTableViewCell.swift */,
-				86ABBA2C2813BD9C00912B42 /* DataSourceWithSectionsHeader.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
