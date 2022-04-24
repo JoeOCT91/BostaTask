@@ -8,22 +8,20 @@
 import UIKit
 
 class ProfileView: UIView{
-    let scrollView = UIScrollView(frame: .zero)
-    let contentView = UIView(frame: .zero)
-    let headerView = UIView(frame: .zero)
-    private let userInformationStack = UIStackView(frame: .zero)
+
     private let userNameLabel = UILabel(frame: .zero)
     private let userFullAddressLabel = UILabel(frame: .zero)
+    private let sectionTitle = UILabel(frame: .zero)
     let albumsTableView = UITableView(frame: .zero)
-    
+    let userInformationStack = UIStackView(frame: .zero)
+
     private let padding: CGFloat = 22
     
     init() {
         super.init(frame: .zero)
         backgroundColor = .white
-        configureNameLabel()
-        configureAddressLabel()
         configureTableView()
+        configureLabels()
         configureUserInformationStack()
     }
     
@@ -33,18 +31,17 @@ class ProfileView: UIView{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layoutUserInformationStack()
         layoutTableView()
     }
     
     func setupUserInformationDetails(userInformation: User) {
         userNameLabel.text = userInformation.name
         userFullAddressLabel.text = userInformation.address.fullAddress
+        sectionTitle.text = L10n.myAlbumsSection
     }
 
-    
     private func configureUserInformationStack() {
-        let stackViews = [ userNameLabel, userFullAddressLabel]
+        let stackViews = [ userNameLabel, userFullAddressLabel, sectionTitle]
         stackViews.forEach { view in
             userInformationStack.addArrangedSubview(view)
         }
@@ -56,13 +53,11 @@ class ProfileView: UIView{
         userInformationStack.spacing = 12
     }
     
-    private func configureNameLabel() {
+    private func configureLabels() {
         userNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
-    }
-    
-    private func configureAddressLabel(){
-        userFullAddressLabel.numberOfLines = 0
+        sectionTitle.font = .systemFont(ofSize: 18, weight: .bold)
         userFullAddressLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        userFullAddressLabel.numberOfLines = 0
     }
     
     private func configureTableView() {
@@ -70,21 +65,11 @@ class ProfileView: UIView{
         albumsTableView.separatorStyle = .none
     }
     
-    private func layoutUserInformationStack() {
-        addSubview(userInformationStack)
-        userInformationStack.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            userInformationStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            userInformationStack.leftAnchor.constraint(equalTo: leftAnchor),
-            userInformationStack.rightAnchor.constraint(equalTo: rightAnchor)
-        ])
-        userInformationStack.layoutIfNeeded()
-    }
     private func layoutTableView() {
         addSubview(albumsTableView)
         albumsTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            albumsTableView.topAnchor.constraint(equalTo: userInformationStack.bottomAnchor),
+            albumsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             albumsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             albumsTableView.leftAnchor.constraint(equalTo: leftAnchor),
             albumsTableView.rightAnchor.constraint(equalTo: rightAnchor)

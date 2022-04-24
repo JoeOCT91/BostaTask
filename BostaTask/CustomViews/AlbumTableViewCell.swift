@@ -39,6 +39,7 @@ class AlbumTableViewCell: UITableViewCell {
     }
     
     private func configureCell() {
+        selectionStyle = .none
         configureContainerStack()
         configureAlbumTitleLabel()
     }
@@ -46,10 +47,10 @@ class AlbumTableViewCell: UITableViewCell {
         contentView.addSubview(containerStack)
         containerStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            containerStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            containerStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding / 2),
             containerStack.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: padding),
             containerStack.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -padding),
-            containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding / 2),
         ])
         let stackViews = [sepView, albumTitleLabel]
         stackViews.forEach { view in
@@ -61,6 +62,7 @@ class AlbumTableViewCell: UITableViewCell {
     
     private func configureAlbumTitleLabel() {
         albumTitleLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        albumTitleLabel.numberOfLines = 1
         albumTitleLabel.minimumScaleFactor = 0.70
     }
 }

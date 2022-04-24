@@ -13,17 +13,11 @@ class ProfileViewController: UIViewController {
     //----------------------------------------------------------------------------------------------------------------
     //=======>MARK: -  Properties ...
     //----------------------------------------------------------------------------------------------------------------
-    private enum Section: SectionProtocol {
+    private enum Section: Hashable {
         case main
-        var header: String {
-            switch self {
-            case .main:
-                return L10n.myAlbumsSection
-            }
-        }
     }
 
-    private typealias DataSource = DataSourceWithSectionsHeader<Section, Album>
+    private typealias DataSource = UITableViewDiffableDataSource<Section, Album>
     private typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Album>
     private var dataSource: DataSource!
     
@@ -47,6 +41,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         title = L10n.profileViewControllerTitle
         navigationController?.navigationBar.prefersLargeTitles = true
+        profileView.albumsTableView.delegate = self
         bindToDataStreamsAndUserInteractions()
         configureDataSource()
     }
@@ -116,4 +111,12 @@ extension ProfileViewController {
         }
         
     }
+}
+extension ProfileViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let userInformationView = profileView.userInformationStack
+        return userInformationView
+    }
+
 }

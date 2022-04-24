@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  UIView+ActivityIndicator.swift
 //  BostaTask
 //
 //  Created by Yousef Mohamed on 24/04/2022.
