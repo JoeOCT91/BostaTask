@@ -72,6 +72,21 @@ extension ProfileViewController {
     private func bindToDataStreamsAndUserInteractions() {
         bindToRandomUser()
         bindToAlbumList()
+        bindToErrorObserver()
+        bindToLoadingData()
+    }
+    private func bindToLoadingData() {
+        viewModel.isLoadingObserver.sink { [weak self] loadingState in
+            guard let self = self else { return }
+            self.profileView.setActivityIndicator = loadingState
+        }.store(in: &subscriptions)
+    }
+    
+    private func bindToErrorObserver() {
+        viewModel.errorOccurredObserver.sink { [weak self] error in
+            guard let _ = self else { return }
+            // implement error handling logic
+        }.store(in: &subscriptions)
     }
     
     private func bindToRandomUser() {
@@ -113,6 +128,10 @@ extension ProfileViewController {
     }
 }
 extension ProfileViewController: UITableViewDelegate {
+    
+    //----------------------------------------------------------------------------------------------------------------
+    //=======>MARK: -  Table view delegation methods ...
+    //----------------------------------------------------------------------------------------------------------------
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let userInformationView = profileView.userInformationStack

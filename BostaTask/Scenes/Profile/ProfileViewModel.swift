@@ -9,14 +9,18 @@ import Foundation
 import Combine
 
 protocol ProfileViewModelProtocol: AnyObject {
-    var isLoading: CurrentValueSubject<Bool, Never> { get }
+    
+    var errorOccurredObserver: PassthroughSubject<Error, Never> { get }
+    var isLoadingObserver: CurrentValueSubject <Bool, Never> { get }
     var randomUser: PassthroughSubject<User, Never> { get }
     var userAlbums: CurrentValueSubject<[Album], Never> { get }
 
 }
-class ProfileViewModel: ProfileViewModelProtocol{
+class ProfileViewModel: ProfileViewModelProtocol {
+    
     private var anyCancellable = Set<AnyCancellable>()
-    var isLoading = CurrentValueSubject<Bool, Never>(false)
+    var errorOccurredObserver = PassthroughSubject<Error, Never>()
+    var isLoadingObserver = CurrentValueSubject<Bool, Never>(false)
     var randomUser = PassthroughSubject<User, Never>()
     var userAlbums = CurrentValueSubject<[Album], Never>([Album]())
     
@@ -26,13 +30,18 @@ class ProfileViewModel: ProfileViewModelProtocol{
     }
     
     private func getUsersList() {
-        NetworkManager.shared().getUsersList().sink { compilation  in
-            print(compilation)
-        } receiveValue: { [weak self] usersList in
-            guard let self = self else { return }
-            guard let randomUser = usersList.randomElement() else { return }
-            self.randomUser.send(randomUser)
-        }.store(in: &anyCancellable)
+        isLoadingObserver.send(true)
+        NetworkManager.shared().getUsersList()
+            .sink { [weak self] completion  in
+                guard let self = self else { return }
+                guard case let .failure(error) = completion else { return }
+                self.isLoadingObserver.send(false)
+                self.errorOccurredObserver.send(error)
+            } receiveValue: { [weak self] usersList in
+                guard let self = self else { return }
+                guard let randomUser = usersList.randomElement() else { return }
+                self.randomUser.send(randomUser)
+            }.store(in: &anyCancellable)
     }
     
     private func getUserData() {
@@ -40,10 +49,15 @@ class ProfileViewModel: ProfileViewModelProtocol{
             NetworkManager.shared().getUserAlbums(userId: $0.id)
         }
         .flatMap({ $0 })
-        .sink { completion  in
+        .sink { [weak self] completion  in
+            guard let self = self else { return }
+            self.isLoadingObserver.send(false)
+            guard case let .failure(error) = completion else { return }
+            self.errorOccurredObserver.send(error)
         } receiveValue: { [weak self] albumsList in
             guard let self = self else { return }
             self.userAlbums.send(albumsList)
+            self.randomUser.send(completion: .finished)
         }.store(in: &anyCancellable)
     }
 }

@@ -23,17 +23,13 @@ class ProfileView: UIView{
         configureTableView()
         configureLabels()
         configureUserInformationStack()
+        layoutTableView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layoutTableView()
-    }
-    
+
     func setupUserInformationDetails(userInformation: User) {
         userNameLabel.text = userInformation.name
         userFullAddressLabel.text = userInformation.address.fullAddress
