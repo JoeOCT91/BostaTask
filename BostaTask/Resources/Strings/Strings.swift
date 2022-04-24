@@ -12,7 +12,7 @@ import Foundation
 internal enum L10n {
   /// Share image with smile 
   internal static let imageShareDescription = L10n.tr("Localizable", "imageShareDescription")
-  /// My Album
+  /// My Albums
   internal static let myAlbumsSection = L10n.tr("Localizable", "myAlbumsSection")
   /// Profile
   internal static let profileViewControllerTitle = L10n.tr("Localizable", "profileViewControllerTitle")

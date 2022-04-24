@@ -70,6 +70,7 @@ extension AlbumPhotosViewController {
     private func bindToDataStreamsAndUserInteractions() {
         bindToAlbumPhotosDataStream()
         bindToLoadingData()
+        bindToErrorObserver()
         bindToSearchBarCancelTapUserInteraction()
     }
     
@@ -120,10 +121,18 @@ extension AlbumPhotosViewController {
             self.albumPhotosView.albumCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         }.store(in: &subscriptions)
     }
+    
     private func bindToLoadingData() {
         viewModel.isLoadingObserver.sink { [weak self] loadingState in
             guard let self = self else { return }
             self.albumPhotosView.setActivityIndicator = loadingState
+        }.store(in: &subscriptions)
+    }
+    
+    private func bindToErrorObserver() {
+        viewModel.errorOccurredObserver.sink { [weak self] error in
+            guard let _ = self else { return }
+            // implement error handling logic
         }.store(in: &subscriptions)
     }
 }

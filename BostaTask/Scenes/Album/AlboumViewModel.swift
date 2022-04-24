@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 protocol AlbumPhotosViewModelProtocol: AnyObject{
+    var errorOccurredObserver: PassthroughSubject<Error, Never> { get }
     var isLoadingObserver: CurrentValueSubject <Bool, Never> { get }
     var albumPhotosList: CurrentValueSubject<[AlbumPhoto], Never> { get }
     var searchKeyWord:PassthroughSubject <String, Never> { set get }
@@ -19,7 +20,7 @@ class AlbumPhotosViewModel: AlbumPhotosViewModelProtocol {
     
     private var anyCancellable = Set<AnyCancellable>()
     private var originalAlbumPhotosList = [AlbumPhoto]()
-
+    internal var errorOccurredObserver = PassthroughSubject<Error, Never>()
     internal var isLoadingObserver = CurrentValueSubject<Bool, Never>(false)
     internal var searchKeyWord = PassthroughSubject <String, Never>()
     internal var albumPhotosList = CurrentValueSubject<[AlbumPhoto], Never>([AlbumPhoto]())
@@ -33,8 +34,11 @@ class AlbumPhotosViewModel: AlbumPhotosViewModelProtocol {
     
     private func fetchAlbumPhotos() {
         isLoadingObserver.send(true)
-        NetworkManager.shared().getAlbumPhotos(albumId: album.albumId).sink { completion in
+        NetworkManager.shared().getAlbumPhotos(albumId: album.albumId).sink { [weak self] completion in
+            guard let self = self else { return }
             self.isLoadingObserver.send(false)
+            guard case let .failure(error) = completion else { return }
+            self.errorOccurredObserver.send(error)
         } receiveValue: { [weak self] photosList in
             guard let self = self else { return }
             self.originalAlbumPhotosList = photosList

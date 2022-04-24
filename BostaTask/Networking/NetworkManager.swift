@@ -21,8 +21,6 @@ class NetworkManager {
         return NetworkManager.sharedInstance
     }
     
-
-    
     func getUsersList() -> Future<[User], Error> {
         return request(target: APIRouter.getUsers)
     }
