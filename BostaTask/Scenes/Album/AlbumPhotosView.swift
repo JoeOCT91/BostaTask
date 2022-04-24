@@ -11,16 +11,17 @@ class AlbumPhotosView: UIView {
     
     let searchController = UISearchController()
     let albumCollectionView: UICollectionView = {
-        let screenWidth = UIScreen.main.bounds.width
-        let padding: CGFloat = 0
+        let screenWidth = UIScreen.main.bounds.width // 
+        let padding: CGFloat = 1
         let numberOfImagesPeerRow: CGFloat = 3
-        let itemWidth: CGFloat = screenWidth / numberOfImagesPeerRow
+        let availableWidth: CGFloat = screenWidth - (padding * 2)
+        let itemWidth: CGFloat = availableWidth / numberOfImagesPeerRow
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth )
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumLineSpacing = 1
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
