@@ -11,7 +11,6 @@ import Kingfisher
 
 class AlbumPhotosViewController: UIViewController {
 
-    
     //----------------------------------------------------------------------------------------------------------------
     //=======>MARK: -  Properties ...
     //----------------------------------------------------------------------------------------------------------------
@@ -70,6 +69,7 @@ extension AlbumPhotosViewController {
     
     private func bindToDataStreamsAndUserInteractions() {
         bindToAlbumPhotosDataStream()
+        bindToLoadingData()
         bindToSearchBarCancelTapUserInteraction()
     }
     
@@ -118,6 +118,12 @@ extension AlbumPhotosViewController {
         albumPhotosView.searchController.searchBar.cancelButtonClickedPublisher.sink { [weak self] _ in
             guard let self = self else { return }
             self.albumPhotosView.albumCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }.store(in: &subscriptions)
+    }
+    private func bindToLoadingData() {
+        viewModel.isLoadingObserver.sink { [weak self] loadingState in
+            guard let self = self else { return }
+            self.albumPhotosView.setActivityIndicator = loadingState
         }.store(in: &subscriptions)
     }
 }

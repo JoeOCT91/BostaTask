@@ -1,9 +1,7 @@
 # BostaTask
 
     this repo contains the source code for Bosta assessment task, using MVVM architecture with coordinators pattern, reactive programing using combine frame work,
-    moya for handling network request, kingfisher for handling images download and cache, combine cocoa for better combine integration with UIKit frame work, And swiftgen 
-    for better resources organisations and accessibility.
-    
+    moya for handling network request, kingfisher for handling images download and cache, combine cocoa for better combine integration with UIKit frame work, And swiftgen for better resources organisations and accessibility.
 
 ## Software stack:
 
