@@ -18,10 +18,8 @@ extension UIView {
         set {
             switch newValue {
             case true:
-                print(newValue)
                 displayAnimatedActivityIndicatorView()
             case false:
-                print(newValue)
                 hideAnimatedActivityIndicatorView()
             }
         }
