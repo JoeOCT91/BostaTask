@@ -13,19 +13,23 @@ class ImageViewerView: UIView {
     var imageView = UIImageView(frame: .zero)
     var scrollView = UIScrollView(frame: .zero)
 
-    private var imageViewCenterXConstraint: NSLayoutConstraint!
-    private var imageViewCenterYConstraint: NSLayoutConstraint!
-    private var imageViewHeightConstraint: NSLayoutConstraint!
-    private var imageViewWidthConstraint: NSLayoutConstraint!
-
     
     init(albumPhoto: AlbumPhoto) {
         super.init(frame: .zero)
         backgroundColor = .white
+        configureScrollView()
+        downloadFullSizeImage(albumPhoto: albumPhoto)
+        scrollView.delegate = self
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layoutScrollView()
         layoutImageView()
-        scrollView.delegate = self
-        downloadFullSizeImage(albumPhoto: albumPhoto)
+    }
+    private func configureScrollView() {
+        scrollView.maximumZoomScale = 2 // to control how big can image become
+        scrollView.minimumZoomScale = 1
     }
     
     private func downloadFullSizeImage(albumPhoto: AlbumPhoto) {
@@ -44,67 +48,47 @@ class ImageViewerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func updateMinZoomScaleForSize(_ size: CGSize) {
-        let widthScale = size.width / imageView.bounds.width
-        let heightScale = size.height / imageView.bounds.height
-        let minScale = min(widthScale, heightScale)
 
-        print(imageView.bounds)
-        print(widthScale)
-        
-        scrollView.minimumZoomScale = minScale
-        scrollView.zoomScale = minScale
-    }
     
     private func layoutScrollView() {
         addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             scrollView.leftAnchor.constraint(equalTo: leftAnchor),
             scrollView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
+
     private func layoutImageView() {
-        imageViewHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
-        imageViewWidthConstraint  = imageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
-        imageViewCenterYConstraint = imageView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
-        imageViewCenterXConstraint = imageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+        let imageViewHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+        let imageViewWidthConstraint = imageView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
+        let imageViewLeftConstraint = imageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor)
+        let imageViewRightConstraint = imageView.rightAnchor.constraint(equalTo: scrollView.rightAnchor)
+        let imageViewTopConstraint = imageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
+        let imageViewBottomConstraint = imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+
         scrollView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(equalTo: scrollView.widthAnchor),
-            imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            imageViewTopConstraint,
+            imageViewBottomConstraint,
+            imageViewRightConstraint,
+            imageViewLeftConstraint,
+            imageViewHeightConstraint,
+            imageViewWidthConstraint,
         ])
     }
-    
-    
-    
 }
 //MARK:- UIScrollViewDelegate
 extension ImageViewerView: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        print(imageView.frame)
         return imageView
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        print("scrollViewDidZoom")
-        updateConstraintsForSize(bounds.size)
-    }
-    
-    func updateConstraintsForSize(_ size: CGSize) {
-        let yOffset = max(0, (size.height - imageView.frame.height) / 2)
-        imageViewHeightConstraint.constant = yOffset
-        print("yOffset is \(yOffset)")
-
-        let xOffset = max(0, (size.width - imageView.frame.width) / 2)
-        imageViewWidthConstraint.constant = xOffset
-        print("xofset is \(xOffset)")
-        
-        layoutIfNeeded()
+        // could use to do improvement to zooming mechanism
     }
 }
