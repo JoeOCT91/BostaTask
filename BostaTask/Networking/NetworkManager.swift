@@ -32,7 +32,6 @@ class NetworkManager {
     func getAlbumPhotos(albumId: Int)  -> Future<[AlbumPhoto], Error>  {
         return request(target: APIRouter.getAlbum(albumId))
     }
-    
 }
 
 private extension NetworkManager {

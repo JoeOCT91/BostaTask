@@ -15,7 +15,7 @@ class AlbumItemCollectionViewCell: UICollectionViewCell {
     var tapSubscription: AnyCancellable?
     let containerView = UIView(frame: .zero)
     let imageView = UIImageView(frame: .zero)
-    let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+    let tapGesture = UITapGestureRecognizer(target: AlbumItemCollectionViewCell.self, action: nil)
     private var downloadTask: DownloadTask?
     
     override init(frame: CGRect) {

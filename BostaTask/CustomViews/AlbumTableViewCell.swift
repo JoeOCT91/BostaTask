@@ -13,7 +13,7 @@ class AlbumTableViewCell: UITableViewCell {
     private let albumTitleLabel = UILabel(frame: .zero)
     private let containerStack = UIStackView(frame: .zero)
     var subscriptions = Set<AnyCancellable>()
-    let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+    let tapGesture = UITapGestureRecognizer(target: AlbumTableViewCell.self, action: nil)
     
     private let padding: CGFloat = 18
     private let sepView: UIView = {
